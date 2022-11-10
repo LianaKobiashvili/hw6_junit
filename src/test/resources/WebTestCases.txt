@@ -1,0 +1,33 @@
+@Test
+    void yandexSearchTest() {
+        open ("https://ya.ru");
+        $ ("#text").setValue ("Selenide");
+        $ ("button[type='submit']").click();
+        $$ ("li.serp-item").shouldHave(CollectionCondition.size(10));
+    }
+
+
+ТЕСТОВЫЕ ДАННЫЕ: [
+["Selenide" - "Selenide - это фреймворк для автоматизированного тестирования",
+
+"JUnit" - "A programmer-oriented testing framework for Java"]
+]
+
+    1) ЗАГОЛОВОК:
+    Проверка числа результатов поиска яндекса для запроса [test_data][0]
+
+    2) КРИТИЧНОСТЬ
+    - мажор
+
+    3) ПРЕДУСЛОВИЯ (опционально)
+    - открыт браузер
+    - в браузере открыта страница "https://ya.ru"
+
+    4) ШАГИ
+    -ввести в поле поиска [test_data][0]
+    - нвжать кнопку найти
+
+    5) ОЖИДАЕМЫЙ РЕЗУЛЬТАТ
+    в результатах поиска отобразилось 10 карточек и в 1 из них есть слово [test_data][1]
+
+
